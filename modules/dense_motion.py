@@ -31,7 +31,7 @@ class DenseMotionNetwork(nn.Module):
 
     def create_heatmap_representations(self, source_image, kp_driving, kp_source):
         """
-        Eq 6. in the paper H_k(z)
+        Eq 3. in the paper H_k(z)
         """
         spatial_size = source_image.shape[2:]
         gaussian_driving = kp2gaussian(kp_driving, spatial_size=spatial_size, kp_variance=self.kp_variance)
@@ -46,7 +46,7 @@ class DenseMotionNetwork(nn.Module):
 
     def create_sparse_motions(self, source_image, kp_driving, kp_source):
         """
-        Eq 4. in the paper T_{s<-d}(z)
+        Eq 2. in the paper T_{s<-d}(z)
         """
         bs, _, h, w = source_image.shape
         identity_grid = make_coordinate_grid((h, w), type=kp_source['value'].type())
@@ -68,7 +68,7 @@ class DenseMotionNetwork(nn.Module):
 
     def create_deformed_source_image(self, source_image, sparse_motions):
         """
-        Eq 7. in the paper \hat{T}_{s<-d}(z)
+        Eq 4. in the paper \hat{T}_{s<-d}(z)
         """
         bs, _, h, w = source_image.shape
         source_repeat = source_image.unsqueeze(1).unsqueeze(1).repeat(1, self.num_kp + 1, 1, 1, 1, 1)

@@ -9,7 +9,7 @@ from torch.autograd import grad
 
 class Vgg19(torch.nn.Module):
     """
-    Vgg19 network for perceptual loss. See Sec 3.3.
+    Vgg19 network for perceptual loss. 
     """
     def __init__(self, requires_grad=False):
         super(Vgg19, self).__init__()
@@ -52,7 +52,7 @@ class Vgg19(torch.nn.Module):
 
 class ImagePyramide(torch.nn.Module):
     """
-    Create image pyramide for computing pyramide perceptual loss. See Sec 3.3
+    Create image pyramide for computing pyramide perceptual loss. 
     """
     def __init__(self, scales, num_channels):
         super(ImagePyramide, self).__init__()
@@ -70,7 +70,7 @@ class ImagePyramide(torch.nn.Module):
 
 class Transform:
     """
-    Random tps transformation for equivariance constraints. See Sec 3.3
+    Random tps transformation for equivariance constraints. 
     """
     def __init__(self, bs, **kwargs):
         noise = torch.normal(mean=0, std=kwargs['sigma_affine'] * torch.ones([bs, 2, 3]))
