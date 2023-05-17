@@ -1,0 +1,10 @@
+/.vscode
+__pycache__
+/venv
+Untitled.ipynb
+Dockerfile
+old_demo.ipynb
+demo.py
+demo.ipnyb
+/log
+/data
